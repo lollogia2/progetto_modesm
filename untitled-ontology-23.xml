@@ -1,0 +1,2185 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/mgiov/ontologies/2025/7/untitled-ontology-23#"
+     xml:base="http://www.semanticweb.org/mgiov/ontologies/2025/7/untitled-ontology-23"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:spiel-des-jahres="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mgiov/ontologies/2025/7/untitled-ontology-23">
+        <dc:creator>Giacometti Lorenzo</dc:creator>
+        <dc:creator>Giovanale Matteo</dc:creator>
+        <dc:date>2025-08-03</dc:date>
+        <dc:description xml:lang="it">Un&apos;ontologia per rappresentare i giochi da tavolo vincitori del premio tedesco Spiel des Jahres</dc:description>
+        <dc:title xml:lang="it">Ontologia dei Giochi da Tavolo Spiel des Jahres</dc:title>
+        <vann:preferredNamespacePrefix>http://www.boardgames.it/ontologies/spiel-des-jahres#</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>sdj</vann:preferredNamespacePrefix>
+        <rdfs:label xml:lang="it">Spiel des Jahres Ontology</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/name"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Location"/>
+        <rdfs:comment xml:lang="it">Luogo dove si verifica l&apos;evento</rdfs:comment>
+        <rdfs:label xml:lang="it">al luogo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#belongsToGenre -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#belongsToGenre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdfs:comment xml:lang="it">Un gioco appartiene a un genere specifico</rdfs:comment>
+        <rdfs:label xml:lang="it">appartiene al genere</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#coDesignedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#coDesignedBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:comment xml:lang="it">Un gioco può essere co-progettato da al massimo un co-designer</rdfs:comment>
+        <rdfs:label xml:lang="it">co-progettato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:comment xml:lang="it">Relazione tra un gioco e il suo designer</rdfs:comment>
+        <rdfs:label xml:lang="it">progettato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedByWinner -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedByWinner">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedBy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+            </rdf:Description>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">Un gioco è progettato da un designer che ha vinto almeno un premio</rdfs:comment>
+        <rdfs:label xml:lang="it">progettato da vincitore</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasAwardCeremony -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasAwardCeremony">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony"/>
+        <rdfs:comment xml:lang="it">Un premio ha una cerimonia di assegnazione</rdfs:comment>
+        <rdfs:label xml:lang="it">ha cerimonia premio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasCollaboratedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasCollaboratedWith">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#coDesignedBy"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#coDesignedBy"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">Se un designer ha progettato un gioco che è stato co-progettato da un altro designer, allora il primo ha collaborato con il secondo</rdfs:comment>
+        <rdfs:label xml:lang="it">ha collaborato con</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/made"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Relazione inversa: un designer ha progettato un gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">ha progettato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasExpansion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasExpansion">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#isExpansion"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion"/>
+        <rdfs:comment xml:lang="it">Un gioco ha delle espansioni</rdfs:comment>
+        <rdfs:label xml:lang="it">ha espansione</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasNominee -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasNominee">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasWinner"/>
+        <rdfs:comment xml:lang="it">Un gioco che è presente nella lista di nomination</rdfs:comment>
+        <rdfs:label xml:lang="it">ha nominato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publishedBy"/>
+        <rdfs:comment xml:lang="it">Un editore ha pubblicato un gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">ha pubblicato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasReleaseEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasReleaseEvent">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease"/>
+        <rdfs:comment xml:lang="it">Un gioco ha un evento di rilascio</rdfs:comment>
+        <rdfs:label xml:lang="it">ha evento rilascio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasWinner -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasWinner">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Il gioco vincitore della lista</rdfs:comment>
+        <rdfs:label xml:lang="it">ha vincitore</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#isExpansion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#isExpansion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Un&apos; espansione appartiene a un gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">è espansione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#nominatedFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#nominatedFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasNominee"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#relatedAward"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">un gioco è stato nominato per il premio ma non lo ha vinto</rdfs:comment>
+        <rdfs:label xml:lang="it">nominato a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publishedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publishedBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdfs:comment xml:lang="it">Un gioco è pubblicato da un singolo editore</rdfs:comment>
+        <rdfs:label xml:lang="it">pubblicato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publisherOfWinningGame -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publisherOfWinningGame">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publishedBy"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">Se un editore pubblica un gioco che ha vinto un premio, allora l&apos;editore è collegato a quel premio</rdfs:comment>
+        <rdfs:label xml:lang="it">editore di gioco vincitore</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#relatedAward -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#relatedAward">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <rdfs:comment xml:lang="it">Il premio a cui si riferisce la lista di nomination</rdfs:comment>
+        <rdfs:label xml:lang="it">premio correlato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasWinner"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#relatedAward"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">Un gioco ha vinto un determinato premio.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha vinto premio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/made -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/made">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/date">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atTime"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Momento esatto dell&apos;evento</rdfs:comment>
+        <rdfs:label xml:lang="it">al momento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#awardYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#awardYear">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:comment xml:lang="it">L&apos;anno in cui ha vinto il Spiel des Jahres</rdfs:comment>
+        <rdfs:label xml:lang="it">anno del premio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment xml:lang="it">Valutazione media su BoardGameGeek</rdfs:comment>
+        <rdfs:label xml:lang="it">valutazione BGG</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#complexity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#complexity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Livello di complessità del gioco (scala da 1.0 a 5.0)</rdfs:comment>
+        <rdfs:label xml:lang="it">complessità</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#eventYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#eventYear">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:comment>anno in cui si è svolta la premiazione</rdfs:comment>
+        <rdfs:label xml:lang="it">anno dell&apos;evento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#maxPlayers -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#maxPlayers">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="it">Il numero massimo di giocatori per questo gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">numero massimo di giocatori</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#minPlayers -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#minPlayers">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="it">Il numero minimo di giocatori per questo gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">numero minimo giocatori</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#playingTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#playingTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:comment xml:lang="it">Durata media del gioco in minuti</rdfs:comment>
+        <rdfs:label>tempo di gioco</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publicationYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publicationYear">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:comment xml:lang="it">L&apos;anno in cui è stato pubblicato il gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">anno di pubblicazione</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Place -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Place">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/Agent -->
+
+    <owl:Class rdf:about="http://purl.org/dc/terms/Agent"/>
+    
+
+
+    <!-- http://schema.org/Award -->
+
+    <owl:Class rdf:about="http://schema.org/Award"/>
+    
+
+
+    <!-- http://schema.org/Game -->
+
+    <owl:Class rdf:about="http://schema.org/Game"/>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdfs:comment xml:lang="it">Cerimonia di assegnazione di un premio</rdfs:comment>
+        <rdfs:label xml:lang="it">Cerimonia di Premiazione</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Game"/>
+        <rdfs:comment xml:lang="it">Un gioco che si svolge su di un tavolo con componenti fisici</rdfs:comment>
+        <rdfs:label xml:lang="it">Gioco da Tavolo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Un gioco dove i giocatori competono l&apos;uno contro l&apos;altro</rdfs:comment>
+        <rdfs:label xml:lang="it">Gioco Competitivo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment>Un gioco dove i giocatori collaborano per raggiungere  un obiettivo comune</rdfs:comment>
+        <rdfs:label xml:lang="it">Gioco Cooperativo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#EurogamePublisher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#EurogamePublisher">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdfs:comment xml:lang="it">Casa editrice specializzata in eurogames</rdfs:comment>
+        <rdfs:label xml:lang="it">Editore di Eurogame</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#complexity"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</xsd:maxExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#maxPlayers"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</xsd:minExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">Gioco competitivo con meccaniche semplici (complessità &lt; 2.5) per gruppi numerosi (più di 2 giocatori), ideale per il divertimento familiare</rdfs:comment>
+        <rdfs:label xml:lang="it">Gioco per Famiglie</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Award"/>
+        <rdfs:comment xml:lang="it">Un premio specifico per giochi da tavolo</rdfs:comment>
+        <rdfs:label xml:lang="it">Premio per giochi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner">
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdfs:comment xml:lang="it">Una persona che progetta giochi da tavolo</rdfs:comment>
+        <rdfs:label xml:lang="it">Designer di Giochi</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Un&apos;espansione che aggiunge contenuti a un gioco base</rdfs:comment>
+        <rdfs:label xml:lang="it">Espansione di Gioco</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Abstract"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Adventure"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Economic"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Party"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">I principali generi di giochi da tavolo</rdfs:comment>
+        <rdfs:label xml:lang="it">Genere di Gioco</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdfs:comment xml:lang="it">Evento di pubblicazione di un gioco</rdfs:comment>
+        <rdfs:label xml:lang="it">Rilascio Gioco</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Location">
+        <rdfs:comment xml:lang="it">Un luogo geografico</rdfs:comment>
+        <rdfs:label xml:lang="it">Luogo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList">
+        <rdfs:comment xml:lang="it">Una lista ordinata di giochi da tavolo nominati per un premio di un certo anno e il relativo  vincitore</rdfs:comment>
+        <rdfs:label xml:lang="it">Lista Nomination</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating"/>
+                                <owl:someValuesFrom>
+                                    <rdfs:Datatype>
+                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                        <owl:withRestrictions rdf:parseType="Collection">
+                                            <rdf:Description>
+                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</xsd:minInclusive>
+                                            </rdf:Description>
+                                        </owl:withRestrictions>
+                                    </rdfs:Datatype>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">Un designer che ha progettato almeno un gioco con rating BGG superiore o uguale a 8.0</rdfs:comment>
+        <rdfs:label xml:lang="it">Designer Popolare</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">Un gioco con valutazione BGG superiore a 7.5</rdfs:comment>
+        <rdfs:label>Gioco Popolare</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher">
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdfs:comment xml:lang="it">Una casa editrice di giochi da tavolo</rdfs:comment>
+        <rdfs:label xml:lang="it">Editore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Un gioco da tavolo nominato per il premio Spiel des Jahres</rdfs:comment>
+        <rdfs:label xml:lang="it">Nominato Spiel des Jahres</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdfs:comment xml:lang="it">Un gioco da tavolo che ha vinto il premio Spiel des Jahres</rdfs:comment>
+        <rdfs:label xml:lang="it">Vincitore Spiel des Jahres</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">Un designer che ha progettato almeno un gioco vincitore di un premio</rdfs:comment>
+        <rdfs:label xml:lang="it">Designer di Successo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation">
+        <rdfs:comment xml:lang="it">Una situazione che si verifica in un momento specifico</rdfs:comment>
+        <rdfs:label xml:lang="it">Situazione Temporale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">Un editore che ha progettato almeno un gioco vincitore di un premio</rdfs:comment>
+        <rdfs:label xml:lang="it">Editore di Successo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Resource -->
+
+    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Abstract -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Abstract">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">Genere di giochi puramente strategici senza tema narrativo</rdfs:comment>
+        <rdfs:label xml:lang="it">Astratto</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Adventure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Adventure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">Genere di giochi con forte componente narrativa e di esplorazione</rdfs:comment>
+        <rdfs:label xml:lang="it">Avventura</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Agricola -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Agricola">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:coDesignedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.1</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.63</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">90</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di gestione risorse e sviluppo fattoria</rdfs:comment>
+        <rdfs:label xml:lang="it">Agricola</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:comment xml:lang="it">Designer francese esperto di giochi cooperativi</rdfs:comment>
+        <rdfs:label xml:lang="it">Alain Orban</rdfs:label>
+        <foaf:name>Alain Orban</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Azul -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Azul">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Abstract"/>
+        <spiel-des-jahres:coDesignedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia"/>
+        <spiel-des-jahres:hasReleaseEvent rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AzulRelease"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PlanBGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.8</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.78</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">30</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2017</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di piazzamento tessere ispirato agli azulejo portoghesi</rdfs:comment>
+        <rdfs:label xml:lang="it">Azul</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AzulRelease -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AzulRelease">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-10-01</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Evento di rilascio di Azul</rdfs:comment>
+        <rdfs:label xml:lang="it">Rilascio Azul</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin">
+        <rdf:type rdf:resource="http://dbpedia.org/ontology/Place"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Location"/>
+        <rdfs:comment xml:lang="it">Capitale della Germania, sede tradizionale delle cerimonie Spiel des Jahres</rdfs:comment>
+        <rdfs:label xml:lang="it">Berlino</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CaptainFlip -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CaptainFlip">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Party"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.2</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">6</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">20</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di carte con meccaniche di flip simultaneo e set collection</rdfs:comment>
+        <rdfs:label xml:lang="it">Captain Flip</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Carcassonne -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Carcassonne">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.4</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.9</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">35</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2000</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di piazzamento tessere</rdfs:comment>
+        <rdfs:label xml:lang="it">Carcassonne</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CarcassonneExpansion1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CarcassonneExpansion1">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede"/>
+        <spiel-des-jahres:isExpansion rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Carcassonne"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2002</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Prima espansione di Carcassonne</rdfs:comment>
+        <rdfs:label xml:lang="it">Carcassonne: Locande e Cattedrali</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Caverna -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Caverna">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.0</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.78</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">7</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">120</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2013</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco basato sulla meccanica di piazzamento di lavoratori</rdfs:comment>
+        <rdfs:label xml:lang="it">Caverna</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-06-25</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Cerimonia di premiazione Spiel des Jahres 2001</rdfs:comment>
+        <rdfs:label xml:lang="it">Cerimonia Spiel des Jahres 2001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2018 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2018">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-07-23</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Cerimonia di premiazione Spiel des Jahres 2018</rdfs:comment>
+        <rdfs:label xml:lang="it">Cerimonia Spiel des Jahres 2018</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2019 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2019">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-22</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Cerimonia di premiazione Spiel des Jahres 2019</rdfs:comment>
+        <rdfs:label xml:lang="it">Cerimonia Spiel des Jahres 2019</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2024 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2024">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-21</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Cerimonia di premiazione Spiel des Jahres 2024</rdfs:comment>
+        <rdfs:label xml:lang="it">Cerimonia Spiel des Jahres 2024</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdfs:comment xml:lang="it">Designer esperto di meccaniche di engine building</rdfs:comment>
+        <rdfs:label xml:lang="it">David Studley</rdfs:label>
+        <foaf:name>David Studley</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Economic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Economic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">Genere di giochi incentrati su meccaniche economiche e gestione risorse</rdfs:comment>
+        <rdfs:label xml:lang="it">Economico</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ElizabethHargrave -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ElizabethHargrave">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner"/>
+        <rdfs:comment xml:lang="it">Designer americana esperta di giochi strategici</rdfs:comment>
+        <rdfs:label xml:lang="it">Elizabeth Hargrave</rdfs:label>
+        <foaf:name>Elizabeth Hargrave</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner"/>
+        <rdfs:comment xml:lang="it">Designer tedesco, creatore di Carcassonne</rdfs:comment>
+        <rdfs:label xml:lang="it">Klaus-Jürgen Wrede</rdfs:label>
+        <foaf:name>Klaus-Jürgen Wrede</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher"/>
+        <rdfs:comment xml:lang="it">Casa editrice tedesca storica, specializzata in giochi educativi e family games</rdfs:comment>
+        <rdfs:label xml:lang="it">Kosmos Games</rdfs:label>
+        <foaf:name>Kosmos Games</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LeHavre -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LeHavre">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.8</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">120</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco gestionale gestione merci all&apos;interno di un porto</rdfs:comment>
+        <rdfs:label xml:lang="it">Le Havre</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LePlateauMont -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LePlateauMont">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher"/>
+        <rdfs:comment xml:lang="it">Casa editrice francese indipendente specializzata in giochi innovativi</rdfs:comment>
+        <rdfs:label xml:lang="it">Le Plateau de Jeux</rdfs:label>
+        <foaf:name>Le Plateau de Jeux</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LostCities -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LostCities">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Abstract"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#StonemaierGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.1</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">30</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1999</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di carte per due giocatori con meccaniche di set collection e risk management</rdfs:comment>
+        <rdfs:label xml:lang="it">Città Perdute</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LucRemond -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LucRemond">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner"/>
+        <rdfs:comment xml:lang="it">Designer francese esperto di giochi cooperativi</rdfs:comment>
+        <rdfs:label xml:lang="it">Luc Rémond</rdfs:label>
+        <foaf:name>Luc Rémond</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#MatthiasCremer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#MatthiasCremer">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+        <rdfs:comment xml:lang="it">Designer emergente</rdfs:comment>
+        <rdfs:label xml:lang="it">Matthias Cremer</rdfs:label>
+        <foaf:name>Matthias Cremer</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <spiel-des-jahres:hasWinner rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Carcassonne"/>
+        <spiel-des-jahres:relatedAward rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2001"/>
+        <rdfs:comment xml:lang="it">Lista dei giochi nominati per il Spiel des Jahres 2001</rdfs:comment>
+        <rdfs:label xml:lang="it">Lista Nomination Spiel des Jahres 2001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2018 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2018">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <spiel-des-jahres:hasNominee rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Caverna"/>
+        <spiel-des-jahres:hasNominee rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SimpleGame"/>
+        <spiel-des-jahres:hasWinner rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Azul"/>
+        <spiel-des-jahres:relatedAward rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2018"/>
+        <rdfs:comment xml:lang="it">Lista dei giochi nominati per il Spiel des Jahres 2018</rdfs:comment>
+        <rdfs:label xml:lang="it">Lista Nomination Spiel des Jahres 2018</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2019 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2019">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <spiel-des-jahres:hasNominee rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Tigris"/>
+        <spiel-des-jahres:hasWinner rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Wingspan"/>
+        <spiel-des-jahres:relatedAward rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2019"/>
+        <rdfs:comment xml:lang="it">Lista dei giochi nominati per il Spiel des Jahres 2019</rdfs:comment>
+        <rdfs:label xml:lang="it">Lista Nomination Spiel des Jahres 2019</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2024 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2024">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+        <spiel-des-jahres:hasNominee rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CaptainFlip"/>
+        <spiel-des-jahres:hasNominee rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ticket2Ride"/>
+        <spiel-des-jahres:hasWinner rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SkyTeam"/>
+        <spiel-des-jahres:relatedAward rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2024"/>
+        <rdfs:comment xml:lang="it">Lista dei giochi nominati per il Spiel des Jahres 2024</rdfs:comment>
+        <rdfs:label xml:lang="it">Lista Nomination Spiel des Jahres 2024</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Pandemic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Pandemic">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#MatthiasCremer"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.6</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.4</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">45</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco cooperativo dove devi debellare una pandemia</rdfs:comment>
+        <rdfs:label xml:lang="it">Pandemic</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Party -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Party">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">Genere di giochi sociali per gruppi numerosi e divertimento immediato</rdfs:comment>
+        <rdfs:label xml:lang="it">Party</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PlanBGames -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PlanBGames">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher"/>
+        <rdfs:comment xml:lang="it">Casa editrice canadese specializzata in giochi family-friendly di alta qualità</rdfs:comment>
+        <rdfs:label xml:lang="it">Plan B Games</rdfs:label>
+        <foaf:name>Plan B Games</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner"/>
+        <rdfs:comment xml:lang="it">Famoso designer tedesco, uno dei più prolifici nel settore dei giochi da tavolo</rdfs:comment>
+        <rdfs:label xml:lang="it">Reiner Knizia</rdfs:label>
+        <foaf:name>Reiner Knizia</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SimpleGame -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SimpleGame">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Party"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#MatthiasCremer"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.2</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">6</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">20</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2022</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco di bluff semplice per famiglie</rdfs:comment>
+        <rdfs:label xml:lang="it">Duo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SkyTeam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SkyTeam">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:coDesignedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LucRemond"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LePlateauMont"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.9</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.1</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">15</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco cooperativo per due giocatori a tema aeroportuale</rdfs:comment>
+        <rdfs:label xml:lang="it">Sky Team</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2001">
+        <rdf:type rdf:resource="http://schema.org/Award"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <spiel-des-jahres:hasAwardCeremony rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2001"/>
+        <rdfs:comment xml:lang="it">Premio Spiel des Jahres 2001</rdfs:comment>
+        <rdfs:label xml:lang="it">Spiel des Jahres 2001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2018 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2018">
+        <rdf:type rdf:resource="http://schema.org/Award"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <spiel-des-jahres:hasAwardCeremony rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2018"/>
+        <rdfs:comment xml:lang="it">Premio Spiel des Jahres 2018</rdfs:comment>
+        <rdfs:label xml:lang="it">Spiel des Jahres 2018</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2019 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2019">
+        <rdf:type rdf:resource="http://schema.org/Award"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <spiel-des-jahres:hasAwardCeremony rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2019"/>
+        <rdfs:comment xml:lang="it">Premio Spiel des Jahres 2019</rdfs:comment>
+        <rdfs:label xml:lang="it">Spiel des Jahres 2019</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2024 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2024">
+        <rdf:type rdf:resource="http://schema.org/Award"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+        <spiel-des-jahres:hasAwardCeremony rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2024"/>
+        <rdfs:comment xml:lang="it">Premio Spiel des Jahres 2024</rdfs:comment>
+        <rdfs:label xml:lang="it">Spiel des Jahres 2024</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#StonemaierGames -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#StonemaierGames">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#EurogamePublisher"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher"/>
+        <rdfs:comment xml:lang="it">Casa editrice americana fondata da Jamey Stegmaier, famosa per produzioni di alta qualità</rdfs:comment>
+        <rdfs:label xml:lang="it">Stonemaier Games</rdfs:label>
+        <foaf:name>Stonemaier Games</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameGenre"/>
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="it">Genere di giochi che richiedono pianificazione e pensiero strategico approfondito</rdfs:comment>
+        <rdfs:label xml:lang="it">Strategia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ticket2Ride -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ticket2Ride">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PlanBGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.4</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.6</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">90</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Versione legacy del classico Ticket to Ride con elementi permanenti che si evolvono</rdfs:comment>
+        <rdfs:label xml:lang="it">Ticket to Ride Legacy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Tigris -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Tigris">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Adventure"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.6</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">120</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1997</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Eurogame strategico ambientato nella Mesopotamia antica</rdfs:comment>
+        <rdfs:label xml:lang="it">Tigri ed Eufrate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/Agent"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+        <rdfs:comment xml:lang="it">Designer tedesco prolifico, noto per Agricola e altri eurogames</rdfs:comment>
+        <rdfs:label xml:lang="it">Uwe Rosenberg</rdfs:label>
+        <foaf:name>Uwe Rosenberg</foaf:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Wingspan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Wingspan">
+        <rdf:type rdf:resource="http://schema.org/Game"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+        <spiel-des-jahres:belongsToGenre rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Strategy"/>
+        <spiel-des-jahres:coDesignedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley"/>
+        <spiel-des-jahres:designedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ElizabethHargrave"/>
+        <spiel-des-jahres:hasReleaseEvent rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#WingspanRelease"/>
+        <spiel-des-jahres:publishedBy rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#StonemaierGames"/>
+        <spiel-des-jahres:bggRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.1</spiel-des-jahres:bggRating>
+        <spiel-des-jahres:complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.42</spiel-des-jahres:complexity>
+        <spiel-des-jahres:maxPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</spiel-des-jahres:maxPlayers>
+        <spiel-des-jahres:minPlayers rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</spiel-des-jahres:minPlayers>
+        <spiel-des-jahres:playingTime rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">70</spiel-des-jahres:playingTime>
+        <spiel-des-jahres:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2019</spiel-des-jahres:publicationYear>
+        <rdfs:comment xml:lang="it">Gioco strategico a tema ornitologico</rdfs:comment>
+        <rdfs:label xml:lang="it">Wing Span</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#WingspanRelease -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#WingspanRelease">
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <spiel-des-jahres:atLocation rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Berlin"/>
+        <spiel-des-jahres:atTime rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-01</spiel-des-jahres:atTime>
+        <rdfs:comment xml:lang="it">Evento di rilascio di Wingspan</rdfs:comment>
+        <rdfs:label xml:lang="it">Rilascio Wingspan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameExpansion"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#c">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#max">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#game">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#list">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#award">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un gioco ha una valutazione BGG maggiore di 7.5, allora è classificato come &quot;PopularGame&quot;. Questa regola identifica automaticamente i giochi più apprezzati dalla comunità BGG</rdfs:comment>
+        <rdfs:label>Regola 1: Classificazione automatica dei giochi popolari</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#x"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#r"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un designer ha progettato almeno un gioco che ha vinto un premio, allora è classificato come &quot;SuccessfulDesigner&quot;. Questa regola identifica automaticamente i designer che hanno ottenuto riconoscimenti ufficiali per le loro creazioni</rdfs:comment>
+        <rdfs:label>Regola 3: Identificazione designer di successo</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un designer ha progettato almeno un gioco con rating BGG superiore a 8.0, allora è classificato come &quot;PopularDesigner&quot;. Questa regola riconosce automaticamente i designer che hanno creato giochi di eccellenza secondo la comunità BGG</rdfs:comment>
+        <rdfs:label>Regola 2: Identificazione dei designer popolari</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameDesigner"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasDesigned"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#bggRating"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#r"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#r"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un editore ha progettato almeno un gioco che ha vinto un premio, allora è classificato come &quot;SuccessfulPublisher&quot;. Questa regola identifica automaticamente gli editori che hanno ottenuto riconoscimenti ufficiali per le loro pubblicazioni</rdfs:comment>
+        <rdfs:label>Regola: Identificazione editore di successo</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#d"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un gioco da tavolo ha vinto un premio per giochi, allora è classificato come &quot;SpielDesJahresWinner&quot;. Questa regola identifica automaticamente tutti i giochi che hanno ottenuto il riconoscimento ufficiale, creando una classificazione unificata di tutti i titoli premiati.</rdfs:comment>
+        <rdfs:label>Regola 4: Classificazione automatica giochi vincitori</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#a"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#a"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un gioco competitivo ha una complessità inferiore a 2.5 e supporta più di 2 giocatori, allora è classificato come &quot;FamilyGame&quot;. Questa regola identifica giochi competitivi semplici e adatti a gruppi familiari, utilizzando soglie di complessità e numero di giocatori per distinguere i giochi accessibili per famiglie da quelli più complessi o per poche persone</rdfs:comment>
+        <rdfs:label>Regola 5: Identificazione giochi per famiglie</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#complexity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#c"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#maxPlayers"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#max"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#c"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                                        <swrl:arguments>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#max"/>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#g"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>Se un gioco da tavolo è stato nominato per un premio per giochi, allora è classificato come &quot;SpielDesJahresNominee&quot;. Questa regola identifica automaticamente tutti i giochi che hanno ricevuto nomination ufficiali, permettendo di distinguere i titoli che hanno ottenuto riconoscimento dalla giuria (anche se non vincitori) da quelli che non hanno mai ricevuto considerazione per i premi.</rdfs:comment>
+        <rdfs:label>Regola: Classificazione automatica giochi nominati</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#BoardGame"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#game"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#list"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameAward"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#award"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasNominee"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#list"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#game"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#relatedAward"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#list"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#award"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#game"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
