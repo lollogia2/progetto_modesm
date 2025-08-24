@@ -8,7 +8,9 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#> .
 
@@ -78,6 +80,14 @@ xsd:gYear rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ProduceGenre
+:ProduceGenre rdf:type owl:ObjectProperty ;
+              rdfs:domain :Publisher ;
+              rdfs:range :GameMacroGenre ;
+              rdfs:comment "casa editrice giochi di genere ameritrash/eurogame"@it ;
+              rdfs:label "produce genere"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#atLocation
 :atLocation rdf:type owl:ObjectProperty ;
             rdfs:domain :TemporalSituation ;
@@ -126,6 +136,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                                          ) ;
                   rdfs:comment "Un gioco è progettato da un designer che ha vinto almeno un premio"@it ;
                   rdfs:label "progettato da vincitore"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#frequentCollaboratorWith
+:frequentCollaboratorWith rdf:type owl:ObjectProperty ,
+                                   owl:SymmetricProperty ;
+                          rdfs:domain :GameDesigner ;
+                          rdfs:range :GameDesigner ;
+                          rdfs:comment "Relazione simmetrica tra designer che collaborano frequentemente (almeno 2 giochi insieme)"@it ;
+                          rdfs:label "collaboratore frequente con"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasAwardCeremony
@@ -178,6 +197,14 @@ xsd:gYear rdf:type rdfs:Datatype .
             rdfs:label "ha nominato"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPrivilegedRelationWith
+:hasPrivilegedRelationWith rdf:type owl:ObjectProperty ;
+                           rdfs:domain :GameDesigner ;
+                           rdfs:range :Publisher ;
+                           rdfs:comment "Se due giochi hanno lo stesso designer e lo stesso editore, allora il designer ha una relazione privilegiata con l'editore"@it ;
+                           rdfs:label "ha una stretta collaborazione con"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished
 :hasPublished rdf:type owl:ObjectProperty ;
               owl:inverseOf :publishedBy ;
@@ -219,6 +246,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                                      ) ;
               rdfs:comment "un gioco è stato nominato per il premio ma non lo ha vinto"@it ;
               rdfs:label "nominato a"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#precedes
+:precedes rdf:type owl:ObjectProperty ,
+                   owl:TransitiveProperty ;
+          rdfs:domain :GameAward ;
+          rdfs:range :GameAward ;
+          rdfs:comment "Un premio precede temporalmente un altro premio"@it ;
+          rdfs:label "precede"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#publishedBy
@@ -288,7 +324,7 @@ dcterms:date rdf:type owl:DatatypeProperty ;
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#awardYear
 :awardYear rdf:type owl:DatatypeProperty ;
-           rdfs:domain :SpielDesJahresWinner ;
+           rdfs:domain :BoardGame ;
            rdfs:range xsd:gYear ;
            rdfs:comment "L'anno in cui ha vinto il Spiel des Jahres"@it ;
            rdfs:label "anno del premio"@it .
@@ -312,6 +348,7 @@ dcterms:date rdf:type owl:DatatypeProperty ;
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#eventYear
 :eventYear rdf:type owl:DatatypeProperty ;
+           rdfs:domain :GameAward ;
            rdfs:range xsd:gYear ;
            rdfs:comment "anno in cui si è svolta la premiazione" ;
            rdfs:label "anno dell'evento"@it .
@@ -370,6 +407,22 @@ dcterms:Agent rdf:type owl:Class .
 <http://schema.org/Game> rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AmeritrashPublisher
+:AmeritrashPublisher rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Publisher
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :ProduceGenre ;
+                                                                  owl:hasValue :Ameritrash
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf :Publisher ;
+                     owl:disjointWith :EurogamePublisher ;
+                     rdfs:comment "Casa editrice specializzata in Ameritrash"@it ;
+                     rdfs:label "Editore di Ameritrash"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AwardCeremony
 :AwardCeremony rdf:type owl:Class ;
                rdfs:subClassOf :TemporalSituation ;
@@ -400,32 +453,57 @@ dcterms:Agent rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#EurogamePublisher
 :EurogamePublisher rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( :Publisher
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :ProduceGenre ;
+                                                                owl:hasValue :Eurogame
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
                    rdfs:subClassOf :Publisher ;
                    rdfs:comment "Casa editrice specializzata in eurogames"@it ;
                    rdfs:label "Editore di Eurogame"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ExpertDesigner
+:ExpertDesigner rdf:type owl:Class ;
+                rdfs:subClassOf :GameDesigner ;
+                rdfs:comment "Un designer che ha progettato almeno tre giochi differenti"@it ;
+                rdfs:label "Designer Esperto"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ExpertGame
+:ExpertGame rdf:type owl:Class ;
+            rdfs:subClassOf :BoardGame ;
+            rdfs:comment "Gioco complesso destinato a giocatori esperti (complessità >= 3.0 e durata > 90 minuti)"@it ;
+            rdfs:label "Gioco per Esperti"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame
 :FamilyGame rdf:type owl:Class ;
-            rdfs:subClassOf :BoardGame ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :complexity ;
-                              owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                   owl:onDatatype xsd:decimal ;
-                                                   owl:withRestrictions ( [ xsd:maxExclusive 2.5
-                                                                          ]
-                                                                        )
-                                                 ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :maxPlayers ;
-                              owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                   owl:onDatatype xsd:nonNegativeInteger ;
-                                                   owl:withRestrictions ( [ xsd:minExclusive 2
-                                                                          ]
-                                                                        )
-                                                 ]
-                            ] ;
+            owl:equivalentClass [ owl:intersectionOf ( :BoardGame
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :complexity ;
+                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                              owl:onDatatype xsd:decimal ;
+                                                                              owl:withRestrictions ( [ xsd:maxExclusive 2.5
+                                                                                                     ]
+                                                                                                   )
+                                                                            ]
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :maxPlayers ;
+                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                              owl:onDatatype xsd:nonNegativeInteger ;
+                                                                              owl:withRestrictions ( [ xsd:minExclusive 2
+                                                                                                     ]
+                                                                                                   )
+                                                                            ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
             rdfs:comment "Gioco competitivo con meccaniche semplici (complessità < 2.5) per gruppi numerosi (più di 2 giocatori), ideale per il divertimento familiare"@it ;
             rdfs:label "Gioco per Famiglie"@it .
 
@@ -466,6 +544,13 @@ dcterms:Agent rdf:type owl:Class .
            rdfs:label "Genere di Gioco"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameMacroGenre
+:GameMacroGenre rdf:type owl:Class ;
+                rdfs:subClassOf skos:Concept ;
+                rdfs:comment "I principali macrogeneri di gioco basati sulla meccanica utilizzata"@it ;
+                rdfs:label "Macrogenere di Gioco"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#GameRelease
 :GameRelease rdf:type owl:Class ;
              rdfs:subClassOf :TemporalSituation ;
@@ -485,43 +570,79 @@ dcterms:Agent rdf:type owl:Class .
                 rdfs:label "Lista Nomination"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularCandidateGame
+:PopularCandidateGame rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( :SpielDesJahresNominee
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :bggRating ;
+                                                                   owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                        owl:onDatatype xsd:decimal ;
+                                                                                        owl:withRestrictions ( [ xsd:minInclusive 7.5
+                                                                                                               ]
+                                                                                                             )
+                                                                                      ]
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf :SpielDesJahresNominee ;
+                      rdfs:comment "Un gioco con valutazione BGG superiore a 7.5 che ha parteciapato allo Spiel ma non ha vinto"@it ;
+                      rdfs:label "Gioco Popolare Candidato" .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner
 :PopularDesigner rdf:type owl:Class ;
-                 rdfs:subClassOf :GameDesigner ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :hasDesigned ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :bggRating ;
-                                                                               owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                                    owl:onDatatype xsd:decimal ;
-                                                                                                    owl:withRestrictions ( [ xsd:minInclusive 7.5
-                                                                                                                           ]
-                                                                                                                         )
-                                                                                                  ]
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasDesigned ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :bggRating ;
+                                                                                   owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                        owl:onDatatype xsd:decimal ;
+                                                                                                        owl:withRestrictions ( [ xsd:minInclusive 7.5
+                                                                                                                               ]
+                                                                                                                             )
+                                                                                                      ]
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                 rdfs:subClassOf :GameDesigner ;
                  rdfs:comment "Un designer che ha progettato almeno un gioco con rating BGG superiore o uguale a 8.0"@it ;
                  rdfs:label "Designer Popolare"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame
 :PopularGame rdf:type owl:Class ;
-             rdfs:subClassOf :BoardGame ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :bggRating ;
-                               owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                    owl:onDatatype xsd:decimal ;
-                                                    owl:withRestrictions ( [ xsd:minInclusive 7.5
-                                                                           ]
-                                                                         )
-                                                  ]
-                             ] ;
-             rdfs:comment "Un gioco con valutazione BGG superiore a 7.5"@it ;
-             rdfs:label "Gioco Popolare" .
+             rdfs:subClassOf :BoardGame .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularWinnerGame
+:PopularWinnerGame rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( :SpielDesJahresWinner
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :bggRating ;
+                                                                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                     owl:onDatatype xsd:decimal ;
+                                                                                     owl:withRestrictions ( [ xsd:minInclusive 7.5
+                                                                                                            ]
+                                                                                                          )
+                                                                                   ]
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf :SpielDesJahresWinner ;
+                   rdfs:comment "Un gioco con valutazione BGG superiore a 7.5 che ha vinto un premio"@it ;
+                   rdfs:label "Gioco Popolare Vincitore" .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ProlificWinnerDesigner
+:ProlificWinnerDesigner rdf:type owl:Class ;
+                        rdfs:subClassOf :SuccessfulDesigner ;
+                        rdfs:comment "Un designer che ha progettato almeno 2 giochi che hanno vinto un premio"@it ;
+                        rdfs:label "Designer Prolifico Vincitore"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Publisher
@@ -533,34 +654,76 @@ dcterms:Agent rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresNominee
 :SpielDesJahresNominee rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty :nominatedFor ;
+                                             owl:someValuesFrom :GameAward
+                                           ] ;
                        rdfs:subClassOf :BoardGame ;
+                       owl:disjointWith :SpielDesJahresWinner ;
                        rdfs:comment "Un gioco da tavolo nominato per il premio Spiel des Jahres"@it ;
                        rdfs:label "Nominato Spiel des Jahres"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner
 :SpielDesJahresWinner rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty :wonAward ;
+                                            owl:someValuesFrom :GameAward
+                                          ] ;
                       rdfs:subClassOf :BoardGame ;
                       rdfs:comment "Un gioco da tavolo che ha vinto il premio Spiel des Jahres"@it ;
                       rdfs:label "Vincitore Spiel des Jahres"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccesfullAmeritrashPublisher
+:SuccesfullAmeritrashPublisher rdf:type owl:Class ;
+                               owl:equivalentClass [ owl:intersectionOf ( :AmeritrashPublisher
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasPublished ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :wonAward ;
+                                                                                                                        owl:someValuesFrom :GameAward
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ] ;
+                               rdfs:subClassOf :AmeritrashPublisher ;
+                               rdfs:comment "Un editore che ha progettato almeno un gioco vincitore di un premio"@it ;
+                               rdfs:label "Editore di Ameritrash di successo"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulDesigner
 :SuccessfulDesigner rdf:type owl:Class ;
-                    rdfs:subClassOf :GameDesigner ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasDesigned ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :wonAward ;
-                                                                                  owl:someValuesFrom :GameAward
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ;
+                    rdfs:subClassOf :GameDesigner ;
                     rdfs:comment "Un designer che ha progettato almeno un gioco vincitore di un premio"@it ;
                     rdfs:label "Designer di Successo"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccessfulEurogamePublisher
+:SuccessfulEurogamePublisher rdf:type owl:Class ;
+                             owl:equivalentClass [ owl:intersectionOf ( :EurogamePublisher
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :hasPublished ;
+                                                                          owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty :wonAward ;
+                                                                                                                      owl:someValuesFrom :GameAward
+                                                                                                                    ]
+                                                                                                                  ) ;
+                                                                                               rdf:type owl:Class
+                                                                                             ]
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ] ;
+                             rdfs:subClassOf :EurogamePublisher ;
+                             rdfs:comment "Un editore che ha progettato almeno un gioco vincitore di un premio"@it ;
+                             rdfs:label "Editore di eurogame Successo"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#TemporalSituation
@@ -569,22 +732,11 @@ dcterms:Agent rdf:type owl:Class .
                    rdfs:label "Situazione Temporale"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#successfulPublisher
-:successfulPublisher rdf:type owl:Class ;
-                     rdfs:subClassOf :Publisher ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasPublished ;
-                                       owl:someValuesFrom [ owl:intersectionOf ( :BoardGame
-                                                                                 [ rdf:type owl:Restriction ;
-                                                                                   owl:onProperty :wonAward ;
-                                                                                   owl:someValuesFrom :GameAward
-                                                                                 ]
-                                                                               ) ;
-                                                            rdf:type owl:Class
-                                                          ]
-                                     ] ;
-                     rdfs:comment "Un editore che ha progettato almeno un gioco vincitore di un premio"@it ;
-                     rdfs:label "Editore di Successo"@it .
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#VersatilePublisher
+:VersatilePublisher rdf:type owl:Class ;
+                    rdfs:subClassOf :Publisher ;
+                    rdfs:comment "Editore che pubblica giochi di generi diversi"@it ;
+                    rdfs:label "Editore Versatile"@it .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#Resource
@@ -638,12 +790,20 @@ skos:Concept rdf:type owl:Class .
             foaf:name "Alain Orban" .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ameritrash
+:Ameritrash rdf:type owl:NamedIndividual ,
+                     :GameMacroGenre ;
+            owl:differentFrom :Eurogame ;
+            rdfs:comment "macrogenere del gioco da tavolo"@it ;
+            rdfs:label "Ameritrash"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Azul
 :Azul rdf:type owl:NamedIndividual ,
                :CompetitiveGame ;
       :belongsToGenre :Abstract ;
       :coDesignedBy :AlainOrban ;
-      :designedBy :ReinerKnizia ;
+      :designedBy :KlausJuergenWrede ;
       :hasReleaseEvent :AzulRelease ;
       :publishedBy :PlanBGames ;
       :bggRating 7.8 ;
@@ -659,6 +819,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AzulRelease
 :AzulRelease rdf:type owl:NamedIndividual ,
                       :GameRelease ;
+             owl:differentFrom :WingspanRelease ;
              :atLocation :Berlin ;
              :atTime "2017-10-01"^^xsd:date ;
              rdfs:comment "Evento di rilascio di Azul"@it ;
@@ -691,6 +852,7 @@ skos:Concept rdf:type owl:Class .
 :Carcassonne rdf:type owl:NamedIndividual ,
                       :CompetitiveGame ;
              :belongsToGenre :Strategy ;
+             :coDesignedBy :AlainOrban ;
              :designedBy :KlausJuergenWrede ;
              :publishedBy :KosmosGames ;
              :bggRating 7.4 ;
@@ -717,6 +879,7 @@ skos:Concept rdf:type owl:Class .
 :Caverna rdf:type owl:NamedIndividual ,
                   :CooperativeGame ;
          :belongsToGenre :Strategy ;
+         :coDesignedBy :LucRemond ;
          :designedBy :UweRosenberg ;
          :publishedBy :KosmosGames ;
          :bggRating 8.0 ;
@@ -729,13 +892,22 @@ skos:Concept rdf:type owl:Class .
          rdfs:label "Caverna"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2001
-:Ceremony2001 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2016
+:Ceremony2016 rdf:type owl:NamedIndividual ,
                        :AwardCeremony ;
               :atLocation :Berlin ;
-              :atTime "2001-06-25"^^xsd:date ;
-              rdfs:comment "Cerimonia di premiazione Spiel des Jahres 2001"@it ;
-              rdfs:label "Cerimonia Spiel des Jahres 2001"@it .
+              :atTime "2016-01-07"^^xsd:date ;
+              rdfs:comment "Cerimonia di premiazione Spiel des Jahres 2016"@it ;
+              rdfs:label "Cerimonia Spiel des Jahres 2016"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2017
+:Ceremony2017 rdf:type owl:NamedIndividual ,
+                       :AwardCeremony ;
+              :atLocation :Berlin ;
+              :atTime "2017-06-25"^^xsd:date ;
+              rdfs:comment "Cerimonia di premiazione Spiel des Jahres 2017"@it ;
+              rdfs:label "Cerimonia Spiel des Jahres 2017"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2018
@@ -756,13 +928,13 @@ skos:Concept rdf:type owl:Class .
               rdfs:label "Cerimonia Spiel des Jahres 2019"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2024
-:Ceremony2024 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ceremony2020
+:Ceremony2020 rdf:type owl:NamedIndividual ,
                        :AwardCeremony ;
               :atLocation :Berlin ;
-              :atTime "2024-07-21"^^xsd:date ;
-              rdfs:comment "Cerimonia di premiazione Spiel des Jahres 2024"@it ;
-              rdfs:label "Cerimonia Spiel des Jahres 2024"@it .
+              :atTime "2020-07-21"^^xsd:date ;
+              rdfs:comment "Cerimonia di premiazione Spiel des Jahres 2020"@it ;
+              rdfs:label "Cerimonia Spiel des Jahres 2020"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley
@@ -788,6 +960,13 @@ skos:Concept rdf:type owl:Class .
                    foaf:name "Elizabeth Hargrave" .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Eurogame
+:Eurogame rdf:type owl:NamedIndividual ,
+                   :GameMacroGenre ;
+          rdfs:comment "macrogenere del gioco da tavolo"@it ;
+          rdfs:label "Eurogame"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede
 :KlausJuergenWrede rdf:type owl:NamedIndividual ,
                             :GameDesigner ;
@@ -799,6 +978,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KosmosGames
 :KosmosGames rdf:type owl:NamedIndividual ,
                       :Publisher ;
+             :ProduceGenre :Ameritrash ;
              rdfs:comment "Casa editrice tedesca storica, specializzata in giochi educativi e family games"@it ;
              rdfs:label "Kosmos Games"@it ;
              foaf:name "Kosmos Games" .
@@ -823,6 +1003,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LePlateauMont
 :LePlateauMont rdf:type owl:NamedIndividual ,
                         :Publisher ;
+               :ProduceGenre :Eurogame ;
                rdfs:comment "Casa editrice francese indipendente specializzata in giochi innovativi"@it ;
                rdfs:label "Le Plateau de Jeux"@it ;
                foaf:name "Le Plateau de Jeux" .
@@ -860,13 +1041,23 @@ skos:Concept rdf:type owl:Class .
                 foaf:name "Matthias Cremer" .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2001
-:NominationList2001 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2016
+:NominationList2016 rdf:type owl:NamedIndividual ,
+                             :NominationList ;
+                    :hasNominee :LeHavre ;
+                    :hasWinner :Pandemic ;
+                    :relatedAward :SpielDesJahres2016 ;
+                    rdfs:comment "Lista dei giochi nominati per il Spiel des Jahres 2016"@it ;
+                    rdfs:label "Lista Nomination Spiel des Jahres 2016"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2017
+:NominationList2017 rdf:type owl:NamedIndividual ,
                              :NominationList ;
                     :hasWinner :Carcassonne ;
-                    :relatedAward :SpielDesJahres2001 ;
-                    rdfs:comment "Lista dei giochi nominati per il Spiel des Jahres 2001"@it ;
-                    rdfs:label "Lista Nomination Spiel des Jahres 2001"@it .
+                    :relatedAward :SpielDesJahres2017 ;
+                    rdfs:comment "Lista dei giochi nominati per il Spiel des Jahres 2017"@it ;
+                    rdfs:label "Lista Nomination Spiel des Jahres 2017"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2018
@@ -890,22 +1081,22 @@ skos:Concept rdf:type owl:Class .
                     rdfs:label "Lista Nomination Spiel des Jahres 2019"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2024
-:NominationList2024 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#NominationList2020
+:NominationList2020 rdf:type owl:NamedIndividual ,
                              :NominationList ;
                     :hasNominee :CaptainFlip ,
                                 :Ticket2Ride ;
                     :hasWinner :SkyTeam ;
-                    :relatedAward :SpielDesJahres2024 ;
-                    rdfs:comment "Lista dei giochi nominati per il Spiel des Jahres 2024"@it ;
-                    rdfs:label "Lista Nomination Spiel des Jahres 2024"@it .
+                    :relatedAward :SpielDesJahres2020 ;
+                    rdfs:comment "Lista dei giochi nominati per il Spiel des Jahres 2020"@it ;
+                    rdfs:label "Lista Nomination Spiel des Jahres 2020"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Pandemic
 :Pandemic rdf:type owl:NamedIndividual ,
                    :CooperativeGame ;
           :belongsToGenre :Strategy ;
-          :designedBy :MatthiasCremer ;
+          :designedBy :ElizabethHargrave ;
           :publishedBy :KosmosGames ;
           :bggRating 7.6 ;
           :complexity 2.4 ;
@@ -927,6 +1118,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PlanBGames
 :PlanBGames rdf:type owl:NamedIndividual ,
                      :Publisher ;
+            :ProduceGenre :Ameritrash ;
             rdfs:comment "Casa editrice canadese specializzata in giochi family-friendly di alta qualità"@it ;
             rdfs:label "Plan B Games"@it ;
             foaf:name "Plan B Games" .
@@ -973,18 +1165,32 @@ skos:Concept rdf:type owl:Class .
          rdfs:label "Sky Team"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2001
-:SpielDesJahres2001 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2016
+:SpielDesJahres2016 rdf:type owl:NamedIndividual ,
                              :GameAward ;
-                    :hasAwardCeremony :Ceremony2001 ;
-                    rdfs:comment "Premio Spiel des Jahres 2001"@it ;
-                    rdfs:label "Spiel des Jahres 2001"@it .
+                    :hasAwardCeremony :Ceremony2016 ;
+                    :precedes :SpielDesJahres2017 ;
+                    :eventYear "2016"^^xsd:gYear ;
+                    rdfs:comment "Premio Spiel des Jahres 2016"@it ;
+                    rdfs:label "Spiel des Jahres 2016"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2017
+:SpielDesJahres2017 rdf:type owl:NamedIndividual ,
+                             :GameAward ;
+                    :hasAwardCeremony :Ceremony2017 ;
+                    :precedes :SpielDesJahres2018 ;
+                    :eventYear "2017"^^xsd:gYear ;
+                    rdfs:comment "Premio Spiel des Jahres 2017"@it ;
+                    rdfs:label "Spiel des Jahres 2017"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2018
 :SpielDesJahres2018 rdf:type owl:NamedIndividual ,
                              :GameAward ;
                     :hasAwardCeremony :Ceremony2018 ;
+                    :precedes :SpielDesJahres2019 ;
+                    :eventYear "2018"^^xsd:gYear ;
                     rdfs:comment "Premio Spiel des Jahres 2018"@it ;
                     rdfs:label "Spiel des Jahres 2018"@it .
 
@@ -993,21 +1199,25 @@ skos:Concept rdf:type owl:Class .
 :SpielDesJahres2019 rdf:type owl:NamedIndividual ,
                              :GameAward ;
                     :hasAwardCeremony :Ceremony2019 ;
+                    :precedes :SpielDesJahres2020 ;
+                    :eventYear "2019"^^xsd:gYear ;
                     rdfs:comment "Premio Spiel des Jahres 2019"@it ;
                     rdfs:label "Spiel des Jahres 2019"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2024
-:SpielDesJahres2024 rdf:type owl:NamedIndividual ,
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahres2020
+:SpielDesJahres2020 rdf:type owl:NamedIndividual ,
                              :GameAward ;
-                    :hasAwardCeremony :Ceremony2024 ;
-                    rdfs:comment "Premio Spiel des Jahres 2024"@it ;
-                    rdfs:label "Spiel des Jahres 2024"@it .
+                    :hasAwardCeremony :Ceremony2020 ;
+                    :eventYear "2020"^^xsd:gYear ;
+                    rdfs:comment "Premio Spiel des Jahres 2020"@it ;
+                    rdfs:label "Spiel des Jahres 2020"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#StonemaierGames
 :StonemaierGames rdf:type owl:NamedIndividual ,
-                          :EurogamePublisher ;
+                          :Publisher ;
+                 :ProduceGenre :Eurogame ;
                  rdfs:comment "Casa editrice americana fondata da Jamey Stegmaier, famosa per produzioni di alta qualità"@it ;
                  rdfs:label "Stonemaier Games"@it ;
                  foaf:name "Stonemaier Games" .
@@ -1021,7 +1231,8 @@ skos:Concept rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ticket2Ride
-:Ticket2Ride rdf:type owl:NamedIndividual ;
+:Ticket2Ride rdf:type owl:NamedIndividual ,
+                      :CompetitiveGame ;
              :belongsToGenre :Strategy ;
              :designedBy :DavidStudley ;
              :publishedBy :PlanBGames ;
@@ -1098,318 +1309,453 @@ skos:Concept rdf:type owl:Class .
 ] .
 
 
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Abstract
+                        :Adventure
+                        :Economic
+                        :Party
+                        :Strategy
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Agricola
+                        :Azul
+                        :CaptainFlip
+                        :Carcassonne
+                        :Caverna
+                        :LeHavre
+                        :LostCities
+                        :Pandemic
+                        :SimpleGame
+                        :SkyTeam
+                        :Ticket2Ride
+                        :Tigris
+                        :Wingspan
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :AlainOrban
+                        :DavidStudley
+                        :ElizabethHargrave
+                        :KlausJuergenWrede
+                        :LucRemond
+                        :MatthiasCremer
+                        :ReinerKnizia
+                        :UweRosenberg
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Ceremony2016
+                        :Ceremony2017
+                        :Ceremony2018
+                        :Ceremony2019
+                        :Ceremony2020
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :KosmosGames
+                        :LePlateauMont
+                        :PlanBGames
+                        :StonemaierGames
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :SpielDesJahres2016
+                        :SpielDesJahres2017
+                        :SpielDesJahres2018
+                        :SpielDesJahres2019
+                        :SpielDesJahres2020
+                      )
+] .
+
+
 #################################################################
 #    Rules
 #################################################################
 
-:g rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:g rdf:type swrl:Variable .
 
-:a rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:comp rdf:type swrl:Variable .
 
-:c rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:time rdf:type swrl:Variable .
 
-:max rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:g1 rdf:type swrl:Variable .
 
-:game rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:g2 rdf:type swrl:Variable .
 
-:list rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:g3 rdf:type swrl:Variable .
 
-:award rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:d rdf:type swrl:Variable .
 
-:x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:designer rdf:type swrl:Variable .
 
-:r rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:game1 rdf:type swrl:Variable .
 
-:d rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+:game2 rdf:type swrl:Variable .
+
+:award1 rdf:type swrl:Variable .
+
+:award2 rdf:type swrl:Variable .
+
+:p rdf:type swrl:Variable .
+
+:genre1 rdf:type swrl:Variable .
+
+:genre2 rdf:type swrl:Variable .
+
+:d1 rdf:type swrl:Variable .
+
+:d2 rdf:type swrl:Variable .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un gioco ha una valutazione BGG maggiore di 7.5, allora è classificato come \"PopularGame\". Questa regola identifica automaticamente i giochi più apprezzati dalla comunità BGG" ;
-   rdfs:label "Regola 1: Classificazione automatica dei giochi popolari" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :BoardGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :bggRating ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :r
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
-                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                          rdf:first :r ;
-                                                                                                                          rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                     rdf:first 7.5 ;
-                                                                                                                                     rdf:rest rdf:nil
-                                                                                                                                   ]
-                                                                                                                        ]
-                                                                           ] ;
-                                                                 rdf:rest rdf:nil
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :PopularGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "Un gioco con complessità >= 3.0 e tempo di gioco > 90 minuti viene classificato come ExpertGame" ;
+   rdfs:label "Regola 2 - Giochi per Esperti" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :BoardGame ;
+                           swrl:argument1 :g
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :complexity ;
+                                      swrl:argument1 :g ;
+                                      swrl:argument2 :comp
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :playingTime ;
+                                                 swrl:argument1 :g ;
+                                                 swrl:argument2 :time
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                            swrl:builtin swrlb:greaterThanOrEqual ;
+                                                            swrl:arguments [ rdf:type rdf:List ;
+                                                                             rdf:first :comp ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first 3.0 ;
+                                                                                        rdf:rest rdf:nil
+                                                                                      ]
+                                                                           ]
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                                       swrl:builtin swrlb:greaterThan ;
+                                                                       swrl:arguments [ rdf:type rdf:List ;
+                                                                                        rdf:first :time ;
+                                                                                        rdf:rest [ rdf:type rdf:List ;
+                                                                                                   rdf:first 90 ;
+                                                                                                   rdf:rest rdf:nil
+                                                                                                 ]
+                                                                                      ]
+                                                                     ] ;
+                                                           rdf:rest rdf:nil
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ExpertGame ;
+                           swrl:argument1 :g
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un designer ha progettato almeno un gioco che ha vinto un premio, allora è classificato come \"SuccessfulDesigner\". Questa regola identifica automaticamente i designer che hanno ottenuto riconoscimenti ufficiali per le loro creazioni" ;
-   rdfs:label "Regola 3: Identificazione designer di successo" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :GameDesigner ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDesigned ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :d ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :g
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :wonAward ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument2> :a
-                                                                           ] ;
-                                                                 rdf:rest rdf:nil
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SuccessfulDesigner ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "regola per trovare  designer che hanno progettato almeno 3 giochi diversi" ;
+   rdfs:label "Regola 6 - Designer Esperto" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :BoardGame ;
+                           swrl:argument1 :g1
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate :BoardGame ;
+                                      swrl:argument1 :g2
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate :BoardGame ;
+                                                 swrl:argument1 :g3
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :designedBy ;
+                                                            swrl:argument1 :g1 ;
+                                                            swrl:argument2 :d
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                       swrl:propertyPredicate :designedBy ;
+                                                                       swrl:argument1 :g2 ;
+                                                                       swrl:argument2 :d
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                  swrl:propertyPredicate :designedBy ;
+                                                                                  swrl:argument1 :g3 ;
+                                                                                  swrl:argument2 :d
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                             swrl:argument1 :g1 ;
+                                                                                             swrl:argument2 :g2
+                                                                                           ] ;
+                                                                                 rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                            rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                                        swrl:argument1 :g1 ;
+                                                                                                        swrl:argument2 :g3
+                                                                                                      ] ;
+                                                                                            rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                       rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                                                   swrl:argument1 :g2 ;
+                                                                                                                   swrl:argument2 :g3
+                                                                                                                 ] ;
+                                                                                                       rdf:rest rdf:nil
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ExpertDesigner ;
+                           swrl:argument1 :d
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un designer ha progettato almeno un gioco con rating BGG superiore a 8.0, allora è classificato come \"PopularDesigner\". Questa regola riconosce automaticamente i designer che hanno creato giochi di eccellenza secondo la comunità BGG" ;
-   rdfs:label "Regola 2: Identificazione dei designer popolari" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :GameDesigner ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDesigned ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :d ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :g
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :bggRating ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument2> :r
-                                                                           ] ;
-                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                     rdf:first :r ;
-                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                rdf:first 7.5 ;
-                                                                                                                                                rdf:rest rdf:nil
-                                                                                                                                              ]
-                                                                                                                                   ]
-                                                                                      ] ;
-                                                                            rdf:rest rdf:nil
-                                                                          ]
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :PopularDesigner ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "Un designer che ha progettato almeno 2 giochi che hanno vinto premi viene classificato come ProlificWinnerDesigner" ;
+   rdfs:label "Regola 5 - Designer Prolifici Vincitori" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :GameDesigner ;
+                           swrl:argument1 :designer
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :hasDesigned ;
+                                      swrl:argument1 :designer ;
+                                      swrl:argument2 :game1
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :hasDesigned ;
+                                                 swrl:argument1 :designer ;
+                                                 swrl:argument2 :game2
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :wonAward ;
+                                                            swrl:argument1 :game1 ;
+                                                            swrl:argument2 :award1
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                       swrl:propertyPredicate :wonAward ;
+                                                                       swrl:argument1 :game2 ;
+                                                                       swrl:argument2 :award2
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                  swrl:argument1 :game1 ;
+                                                                                  swrl:argument2 :game2
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ProlificWinnerDesigner ;
+                           swrl:argument1 :designer
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un editore ha progettato almeno un gioco che ha vinto un premio, allora è classificato come \"SuccessfulPublisher\". Questa regola identifica automaticamente gli editori che hanno ottenuto riconoscimenti ufficiali per le loro pubblicazioni" ;
-   rdfs:label "Regola: Identificazione editore di successo" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Publisher ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasPublished ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :d ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :g
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :wonAward ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument2> :a
-                                                                           ] ;
-                                                                 rdf:rest rdf:nil
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :successfulPublisher ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :d
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "Gli editori che pubblicano giochi di generi diversi diventano \"VersatilePublisher\"" ;
+   rdfs:label "Regola 3 - Editori Versatili" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Publisher ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :hasPublished ;
+                                      swrl:argument1 :p ;
+                                      swrl:argument2 :g1
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :hasPublished ;
+                                                 swrl:argument1 :p ;
+                                                 swrl:argument2 :g2
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :belongsToGenre ;
+                                                            swrl:argument1 :g1 ;
+                                                            swrl:argument2 :genre1
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                       swrl:propertyPredicate :belongsToGenre ;
+                                                                       swrl:argument1 :g2 ;
+                                                                       swrl:argument2 :genre2
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                  swrl:argument1 :genre1 ;
+                                                                                  swrl:argument2 :genre2
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :VersatilePublisher ;
+                           swrl:argument1 :p
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un gioco da tavolo ha vinto un premio per giochi, allora è classificato come \"SpielDesJahresWinner\". Questa regola identifica automaticamente tutti i giochi che hanno ottenuto il riconoscimento ufficiale, creando una classificazione unificata di tutti i titoli premiati." ;
-   rdfs:label "Regola 4: Classificazione automatica giochi vincitori" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :BoardGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :g
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :wonAward ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :a
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> :GameAward ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :a
-                                                                           ] ;
-                                                                 rdf:rest rdf:nil
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SpielDesJahresWinner ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :g
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "Due designer che hanno co-progettato almeno 2 giochi insieme diventano FrequentCollaborators" ;
+   rdfs:label "Regola 1 - Collaboratori Frequenti" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :designedBy ;
+                           swrl:argument1 :g1 ;
+                           swrl:argument2 :d1
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :coDesignedBy ;
+                                      swrl:argument1 :g1 ;
+                                      swrl:argument2 :d2
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :designedBy ;
+                                                 swrl:argument1 :g2 ;
+                                                 swrl:argument2 :d1
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :coDesignedBy ;
+                                                            swrl:argument1 :g2 ;
+                                                            swrl:argument2 :d2
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                       swrl:argument1 :g1 ;
+                                                                       swrl:argument2 :g2
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                                  swrl:argument1 :d1 ;
+                                                                                  swrl:argument2 :d2
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :frequentCollaboratorWith ;
+                           swrl:argument1 :d1 ;
+                           swrl:argument2 :d2
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un gioco competitivo ha una complessità inferiore a 2.5 e supporta più di 2 giocatori, allora è classificato come \"FamilyGame\". Questa regola identifica giochi competitivi semplici e adatti a gruppi familiari, utilizzando soglie di complessità e numero di giocatori per distinguere i giochi accessibili per famiglie da quelli più complessi o per poche persone" ;
-   rdfs:label "Regola 5: Identificazione giochi per famiglie" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :BoardGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :g
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :complexity ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :c
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :maxPlayers ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :g ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument2> :max
-                                                                           ] ;
-                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                     rdf:first :c ;
-                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                rdf:first 2.5 ;
-                                                                                                                                                rdf:rest rdf:nil
-                                                                                                                                              ]
-                                                                                                                                   ]
-                                                                                      ] ;
-                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
-                                                                                                                                                rdf:first :max ;
-                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
-                                                                                                                                                           rdf:first 2 ;
-                                                                                                                                                           rdf:rest rdf:nil
-                                                                                                                                                         ]
-                                                                                                                                              ]
-                                                                                                 ] ;
-                                                                                       rdf:rest rdf:nil
-                                                                                     ]
-                                                                          ]
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :FamilyGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :g
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
- ] .
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se un gioco da tavolo è stato nominato per un premio per giochi, allora è classificato come \"SpielDesJahresNominee\". Questa regola identifica automaticamente tutti i giochi che hanno ricevuto nomination ufficiali, permettendo di distinguere i titoli che hanno ottenuto riconoscimento dalla giuria (anche se non vincitori) da quelli che non hanno mai ricevuto considerazione per i premi." ;
-   rdfs:label "Regola: Classificazione automatica giochi nominati" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :BoardGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :game
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :NominationList ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :list
-                                                                ] ;
-                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> :GameAward ;
-                                                                             <http://www.w3.org/2003/11/swrl#argument1> :award
-                                                                           ] ;
-                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasNominee ;
-                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :list ;
-                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :game
-                                                                                      ] ;
-                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> :relatedAward ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> :list ;
-                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> :award
-                                                                                                 ] ;
-                                                                                       rdf:rest rdf:nil
-                                                                                     ]
-                                                                          ]
-                                                               ]
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SpielDesJahresNominee ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :game
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
+   rdfs:comment "Due designer che collaborano su un gioco cooperativo vengono collegati dalla proprietà cooperativePartner" ;
+   rdfs:label "Regola 4 - Relazione Privilegiata Designer-Editore" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :designedBy ;
+                           swrl:argument1 :g1 ;
+                           swrl:argument2 :d
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :designedBy ;
+                                      swrl:argument1 :g2 ;
+                                      swrl:argument2 :d
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :publishedBy ;
+                                                 swrl:argument1 :g1 ;
+                                                 swrl:argument2 :p
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :publishedBy ;
+                                                            swrl:argument1 :g2 ;
+                                                            swrl:argument2 :p
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:DifferentIndividualsAtom ;
+                                                                       swrl:argument1 :g1 ;
+                                                                       swrl:argument2 :g2
+                                                                     ] ;
+                                                           rdf:rest rdf:nil
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :hasPrivilegedRelationWith ;
+                           swrl:argument1 :d ;
+                           swrl:argument2 :p
+                         ] ;
+               rdf:rest rdf:nil
+             ]
  ] .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
