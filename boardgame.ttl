@@ -286,6 +286,14 @@ xsd:gYear rdf:type rdfs:Datatype .
               rdfs:label "premio correlato"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#typeOfInteraction
+:typeOfInteraction rdf:type owl:ObjectProperty ;
+                   rdfs:domain :BoardGame ;
+                   rdfs:range :GameMacroGenre ;
+                   rdfs:comment "Il tipo di interazione tra i giocatori che definisce un gioco da tavolo"@it ;
+                   rdfs:label "tipo di interazione"@it .
+
+
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#wonAward
 :wonAward rdf:type owl:ObjectProperty ;
           rdfs:domain :BoardGame ;
@@ -310,7 +318,6 @@ foaf:made rdf:type owl:ObjectProperty ;
 ###  http://purl.org/dc/terms/date
 dcterms:date rdf:type owl:DatatypeProperty ;
              owl:equivalentProperty :atTime ;
-             rdfs:domain rdfs:Resource ;
              rdfs:range rdfs:Literal .
 
 
@@ -344,6 +351,22 @@ dcterms:date rdf:type owl:DatatypeProperty ;
             rdfs:range xsd:decimal ;
             rdfs:comment "Livello di complessità del gioco (scala da 1.0 a 5.0)" ;
             rdfs:label "complessità"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#designerName
+:designerName rdf:type owl:DatatypeProperty ;
+              rdfs:domain :GameDesigner ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Il nome di un determinato designer di giochi da tavolo" ;
+              rdfs:label "nome del designer"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#editorName
+:editorName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Publisher ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Il nome di una casa editrice" ;
+            rdfs:label "nome dell'editore"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#eventYear
@@ -384,6 +407,14 @@ dcterms:date rdf:type owl:DatatypeProperty ;
                  rdfs:range xsd:gYear ;
                  rdfs:comment "L'anno in cui è stato pubblicato il gioco"@it ;
                  rdfs:label "anno di pubblicazione"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#title
+:title rdf:type owl:DatatypeProperty ;
+       rdfs:domain :BoardGame ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Il nome del gioco da tavolo"@it ;
+       rdfs:label "titolo del gioco"@it .
 
 
 #################################################################
@@ -437,20 +468,6 @@ dcterms:Agent rdf:type owl:Class .
            rdfs:label "Gioco da Tavolo"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CompetitiveGame
-:CompetitiveGame rdf:type owl:Class ;
-                 rdfs:subClassOf :BoardGame ;
-                 rdfs:comment "Un gioco dove i giocatori competono l'uno contro l'altro"@it ;
-                 rdfs:label "Gioco Competitivo"@it .
-
-
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#CooperativeGame
-:CooperativeGame rdf:type owl:Class ;
-                 rdfs:subClassOf :BoardGame ;
-                 rdfs:comment "Un gioco dove i giocatori collaborano per raggiungere  un obiettivo comune" ;
-                 rdfs:label "Gioco Cooperativo"@it .
-
-
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#EurogamePublisher
 :EurogamePublisher rdf:type owl:Class ;
                    owl:equivalentClass [ owl:intersectionOf ( :Publisher
@@ -471,13 +488,6 @@ dcterms:Agent rdf:type owl:Class .
                 rdfs:subClassOf :GameDesigner ;
                 rdfs:comment "Un designer che ha progettato almeno tre giochi differenti"@it ;
                 rdfs:label "Designer Esperto"@it .
-
-
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ExpertGame
-:ExpertGame rdf:type owl:Class ;
-            rdfs:subClassOf :BoardGame ;
-            rdfs:comment "Gioco complesso destinato a giocatori esperti (complessità >= 3.0 e durata > 90 minuti)"@it ;
-            rdfs:label "Gioco per Esperti"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#FamilyGame
@@ -586,8 +596,68 @@ dcterms:Agent rdf:type owl:Class .
                                             rdf:type owl:Class
                                           ] ;
                       rdfs:subClassOf :SpielDesJahresNominee ;
-                      rdfs:comment "Un gioco con valutazione BGG superiore a 7.5 che ha parteciapato allo Spiel ma non ha vinto"@it ;
-                      rdfs:label "Gioco Popolare Candidato" .
+                      rdfs:comment "Giochi con valutazione BGG superiore a 7.5 che hanno pertecipato allo Spiel ma non hanno vinto"@it ;
+                      rdfs:label "Giochi Popolari Nominati"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularCompetitiveCandidateGame
+:PopularCompetitiveCandidateGame rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( :PopularCandidateGame
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :typeOfInteraction ;
+                                                                              owl:hasValue :competitive
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                 rdfs:subClassOf :PopularCandidateGame ;
+                                 rdfs:comment "Giochi competitivi che si sono candidati ai Spiel des Jashres, con una valutazione bgg > a 7.5"@it ;
+                                 rdfs:label "Giochi Popolari Competitivi Nominati"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularCompetitiveWinningGame
+:PopularCompetitiveWinningGame rdf:type owl:Class ;
+                               owl:equivalentClass [ owl:intersectionOf ( :PopularWinnerGame
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :typeOfInteraction ;
+                                                                            owl:hasValue :competitive
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ] ;
+                               rdfs:subClassOf :PopularWinnerGame ;
+                               rdfs:comment "Giochi competitivi che hanno vinto lo Spiel des Jahres, con una valutazione bgg > a 7.5"@it ;
+                               rdfs:label "Giochi Popolari Competitivi Vincitori"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularCooperativeCandidateGame
+:PopularCooperativeCandidateGame rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( :PopularCandidateGame
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :typeOfInteraction ;
+                                                                              owl:hasValue :cooperative
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                 rdfs:subClassOf :PopularCandidateGame ;
+                                 rdfs:comment "Giochi cooperativi che si sono candidati ai Spiel des Jashres, con una valutazione bgg > a 7.5"@it ;
+                                 rdfs:label "Giochi Popolari Cooperativi Nominati"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularCooperativeWinningGame
+:PopularCooperativeWinningGame rdf:type owl:Class ;
+                               owl:equivalentClass [ owl:intersectionOf ( :PopularWinnerGame
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :typeOfInteraction ;
+                                                                            owl:hasValue :cooperative
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ] ;
+                               rdfs:subClassOf :PopularWinnerGame ;
+                               rdfs:comment "Giochi cooperativi che hanno vinto lo Spiel des Jahres, con una valutazione bgg > a 7.5"@it ;
+                               rdfs:label "Giochi Popolari Cooperativi Vincitori"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularDesigner
@@ -613,11 +683,6 @@ dcterms:Agent rdf:type owl:Class .
                  rdfs:label "Designer Popolare"@it .
 
 
-###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularGame
-:PopularGame rdf:type owl:Class ;
-             rdfs:subClassOf :BoardGame .
-
-
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#PopularWinnerGame
 :PopularWinnerGame rdf:type owl:Class ;
                    owl:equivalentClass [ owl:intersectionOf ( :SpielDesJahresWinner
@@ -634,8 +699,8 @@ dcterms:Agent rdf:type owl:Class .
                                          rdf:type owl:Class
                                        ] ;
                    rdfs:subClassOf :SpielDesJahresWinner ;
-                   rdfs:comment "Un gioco con valutazione BGG superiore a 7.5 che ha vinto un premio"@it ;
-                   rdfs:label "Gioco Popolare Vincitore" .
+                   rdfs:comment "Giochi con valutazione BGG superiore a 7.5 che hanno vinto un premio"@it ;
+                   rdfs:label "Giochi Popolari Vincitori"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ProlificWinnerDesigner
@@ -660,8 +725,8 @@ dcterms:Agent rdf:type owl:Class .
                                            ] ;
                        rdfs:subClassOf :BoardGame ;
                        owl:disjointWith :SpielDesJahresWinner ;
-                       rdfs:comment "Un gioco da tavolo nominato per il premio Spiel des Jahres"@it ;
-                       rdfs:label "Nominato Spiel des Jahres"@it .
+                       rdfs:comment "Giochi da tavolo nominati per il premio Spiel des Jahres"@it ;
+                       rdfs:label "Nominati allo Spiel des Jahres"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SpielDesJahresWinner
@@ -671,8 +736,8 @@ dcterms:Agent rdf:type owl:Class .
                                             owl:someValuesFrom :GameAward
                                           ] ;
                       rdfs:subClassOf :BoardGame ;
-                      rdfs:comment "Un gioco da tavolo che ha vinto il premio Spiel des Jahres"@it ;
-                      rdfs:label "Vincitore Spiel des Jahres"@it .
+                      rdfs:comment "Giochi da tavolo che hanno vinto il premio Spiel des Jahres"@it ;
+                      rdfs:label "Vincitori Spiel des Jahres"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SuccesfullAmeritrashPublisher
@@ -739,10 +804,6 @@ dcterms:Agent rdf:type owl:Class .
                     rdfs:label "Editore Versatile"@it .
 
 
-###  http://www.w3.org/2000/01/rdf-schema#Resource
-rdfs:Resource rdf:type owl:Class .
-
-
 ###  http://www.w3.org/2004/02/skos/core#Concept
 skos:Concept rdf:type owl:Class .
 
@@ -767,17 +828,19 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Agricola
 :Agricola rdf:type owl:NamedIndividual ,
-                   :CompetitiveGame ;
+                   :BoardGame ;
           :belongsToGenre :Strategy ;
           :coDesignedBy :KlausJuergenWrede ;
           :designedBy :UweRosenberg ;
           :publishedBy :KosmosGames ;
+          :typeOfInteraction :competitive ;
           :bggRating 8.1 ;
           :complexity 3.63 ;
           :maxPlayers "5"^^xsd:nonNegativeInteger ;
           :minPlayers "1"^^xsd:nonNegativeInteger ;
           :playingTime "90"^^xsd:positiveInteger ;
           :publicationYear "2007"^^xsd:gYear ;
+          :title "Agricola" ;
           rdfs:comment "Gioco di gestione risorse e sviluppo fattoria"@it ;
           rdfs:label "Agricola"@it .
 
@@ -785,6 +848,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#AlainOrban
 :AlainOrban rdf:type owl:NamedIndividual ,
                      :GameDesigner ;
+            :designerName "Alain Orban" ;
             rdfs:comment "Designer francese esperto di giochi cooperativi"@it ;
             rdfs:label "Alain Orban"@it ;
             foaf:name "Alain Orban" .
@@ -793,25 +857,26 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ameritrash
 :Ameritrash rdf:type owl:NamedIndividual ,
                      :GameMacroGenre ;
-            owl:differentFrom :Eurogame ;
             rdfs:comment "macrogenere del gioco da tavolo"@it ;
             rdfs:label "Ameritrash"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Azul
 :Azul rdf:type owl:NamedIndividual ,
-               :CompetitiveGame ;
+               :BoardGame ;
       :belongsToGenre :Abstract ;
       :coDesignedBy :AlainOrban ;
       :designedBy :KlausJuergenWrede ;
       :hasReleaseEvent :AzulRelease ;
       :publishedBy :PlanBGames ;
+      :typeOfInteraction :competitive ;
       :bggRating 7.8 ;
       :complexity 1.78 ;
       :maxPlayers "4"^^xsd:nonNegativeInteger ;
       :minPlayers "2"^^xsd:nonNegativeInteger ;
       :playingTime "30"^^xsd:positiveInteger ;
       :publicationYear "2017"^^xsd:gYear ;
+      :title "Azul" ;
       rdfs:comment "Gioco di piazzamento tessere ispirato agli azulejo portoghesi"@it ;
       rdfs:label "Azul"@it .
 
@@ -850,17 +915,19 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Carcassonne
 :Carcassonne rdf:type owl:NamedIndividual ,
-                      :CompetitiveGame ;
+                      :BoardGame ;
              :belongsToGenre :Strategy ;
              :coDesignedBy :AlainOrban ;
              :designedBy :KlausJuergenWrede ;
              :publishedBy :KosmosGames ;
+             :typeOfInteraction :competitive ;
              :bggRating 7.4 ;
              :complexity 1.9 ;
              :maxPlayers "5"^^xsd:nonNegativeInteger ;
              :minPlayers "2"^^xsd:nonNegativeInteger ;
              :playingTime "35"^^xsd:positiveInteger ;
              :publicationYear "2000"^^xsd:gYear ;
+             :title "Carcassonne" ;
              rdfs:comment "Gioco di piazzamento tessere"@it ;
              rdfs:label "Carcassonne"@it .
 
@@ -877,17 +944,19 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Caverna
 :Caverna rdf:type owl:NamedIndividual ,
-                  :CooperativeGame ;
+                  :BoardGame ;
          :belongsToGenre :Strategy ;
          :coDesignedBy :LucRemond ;
          :designedBy :UweRosenberg ;
          :publishedBy :KosmosGames ;
+         :typeOfInteraction :competitive ;
          :bggRating 8.0 ;
          :complexity 3.78 ;
          :maxPlayers "7"^^xsd:nonNegativeInteger ;
          :minPlayers "1"^^xsd:nonNegativeInteger ;
          :playingTime "120"^^xsd:positiveInteger ;
          :publicationYear "2013"^^xsd:gYear ;
+         :title "Caverna" ;
          rdfs:comment "Gioco basato sulla meccanica di piazzamento di lavoratori"@it ;
          rdfs:label "Caverna"@it .
 
@@ -940,6 +1009,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#DavidStudley
 :DavidStudley rdf:type owl:NamedIndividual ,
                        :GameDesigner ;
+              :designerName "David Studley" ;
               rdfs:comment "Designer esperto di meccaniche di engine building"@it ;
               rdfs:label "David Studley"@it ;
               foaf:name "David Studley" .
@@ -955,6 +1025,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ElizabethHargrave
 :ElizabethHargrave rdf:type owl:NamedIndividual ,
                             :GameDesigner ;
+                   :designerName "Elizabeth Hargrave" ;
                    rdfs:comment "Designer americana esperta di giochi strategici"@it ;
                    rdfs:label "Elizabeth Hargrave"@it ;
                    foaf:name "Elizabeth Hargrave" .
@@ -970,6 +1041,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#KlausJuergenWrede
 :KlausJuergenWrede rdf:type owl:NamedIndividual ,
                             :GameDesigner ;
+                   :designerName "Klaus-Jürgen Wrede" ;
                    rdfs:comment "Designer tedesco, creatore di Carcassonne"@it ;
                    rdfs:label "Klaus-Jürgen Wrede"@it ;
                    foaf:name "Klaus-Jürgen Wrede" .
@@ -979,6 +1051,7 @@ skos:Concept rdf:type owl:Class .
 :KosmosGames rdf:type owl:NamedIndividual ,
                       :Publisher ;
              :ProduceGenre :Ameritrash ;
+             :editorName "Kosmos Games" ;
              rdfs:comment "Casa editrice tedesca storica, specializzata in giochi educativi e family games"@it ;
              rdfs:label "Kosmos Games"@it ;
              foaf:name "Kosmos Games" .
@@ -986,16 +1059,18 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LeHavre
 :LeHavre rdf:type owl:NamedIndividual ,
-                  :CompetitiveGame ;
+                  :BoardGame ;
          :belongsToGenre :Strategy ;
          :designedBy :UweRosenberg ;
          :publishedBy :KosmosGames ;
+         :typeOfInteraction :cooperative ;
          :bggRating 7.8 ;
          :complexity 3.8 ;
          :maxPlayers "5"^^xsd:nonNegativeInteger ;
          :minPlayers "1"^^xsd:nonNegativeInteger ;
          :playingTime "120"^^xsd:positiveInteger ;
          :publicationYear "2008"^^xsd:gYear ;
+         :title "Le Havre" ;
          rdfs:comment "Gioco gestionale gestione merci all'interno di un porto"@it ;
          rdfs:label "Le Havre"@it .
 
@@ -1004,6 +1079,7 @@ skos:Concept rdf:type owl:Class .
 :LePlateauMont rdf:type owl:NamedIndividual ,
                         :Publisher ;
                :ProduceGenre :Eurogame ;
+               :editorName "Le Plateau de Jeux" ;
                rdfs:comment "Casa editrice francese indipendente specializzata in giochi innovativi"@it ;
                rdfs:label "Le Plateau de Jeux"@it ;
                foaf:name "Le Plateau de Jeux" .
@@ -1011,16 +1087,18 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LostCities
 :LostCities rdf:type owl:NamedIndividual ,
-                     :CompetitiveGame ;
+                     :BoardGame ;
             :belongsToGenre :Abstract ;
             :designedBy :ReinerKnizia ;
             :publishedBy :StonemaierGames ;
+            :typeOfInteraction :cooperative ;
             :bggRating 7.1 ;
             :complexity 1.4 ;
             :maxPlayers "2"^^xsd:nonNegativeInteger ;
             :minPlayers "2"^^xsd:nonNegativeInteger ;
             :playingTime "30"^^xsd:positiveInteger ;
             :publicationYear "1999"^^xsd:gYear ;
+            :title "Città Perdute" ;
             rdfs:comment "Gioco di carte per due giocatori con meccaniche di set collection e risk management"@it ;
             rdfs:label "Città Perdute"@it .
 
@@ -1028,6 +1106,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#LucRemond
 :LucRemond rdf:type owl:NamedIndividual ,
                     :GameDesigner ;
+           :designerName "Luc Rémond" ;
            rdfs:comment "Designer francese esperto di giochi cooperativi"@it ;
            rdfs:label "Luc Rémond"@it ;
            foaf:name "Luc Rémond" .
@@ -1036,6 +1115,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#MatthiasCremer
 :MatthiasCremer rdf:type owl:NamedIndividual ,
                          :GameDesigner ;
+                :designerName "Matthias Cremer" ;
                 rdfs:comment "Designer emergente"@it ;
                 rdfs:label "Matthias Cremer"@it ;
                 foaf:name "Matthias Cremer" .
@@ -1094,16 +1174,18 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Pandemic
 :Pandemic rdf:type owl:NamedIndividual ,
-                   :CooperativeGame ;
+                   :BoardGame ;
           :belongsToGenre :Strategy ;
           :designedBy :ElizabethHargrave ;
           :publishedBy :KosmosGames ;
+          :typeOfInteraction :cooperative ;
           :bggRating 7.6 ;
           :complexity 2.4 ;
           :maxPlayers "4"^^xsd:nonNegativeInteger ;
           :minPlayers "2"^^xsd:nonNegativeInteger ;
           :playingTime "45"^^xsd:positiveInteger ;
           :publicationYear "2008"^^xsd:gYear ;
+          :title "Pandemic" ;
           rdfs:comment "Gioco cooperativo dove devi debellare una pandemia"@it ;
           rdfs:label "Pandemic"@it .
 
@@ -1119,6 +1201,7 @@ skos:Concept rdf:type owl:Class .
 :PlanBGames rdf:type owl:NamedIndividual ,
                      :Publisher ;
             :ProduceGenre :Ameritrash ;
+            :editorName "'Plan B Games'" ;
             rdfs:comment "Casa editrice canadese specializzata in giochi family-friendly di alta qualità"@it ;
             rdfs:label "Plan B Games"@it ;
             foaf:name "Plan B Games" .
@@ -1127,6 +1210,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#ReinerKnizia
 :ReinerKnizia rdf:type owl:NamedIndividual ,
                        :GameDesigner ;
+              :designerName "Reiner Knizia" ;
               rdfs:comment "Famoso designer tedesco, uno dei più prolifici nel settore dei giochi da tavolo"@it ;
               rdfs:label "Reiner Knizia"@it ;
               foaf:name "Reiner Knizia" .
@@ -1134,33 +1218,37 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SimpleGame
 :SimpleGame rdf:type owl:NamedIndividual ,
-                     :CompetitiveGame ;
+                     :BoardGame ;
             :belongsToGenre :Party ;
             :designedBy :MatthiasCremer ;
             :publishedBy :KosmosGames ;
+            :typeOfInteraction :competitive ;
             :bggRating 6.2 ;
             :complexity 1.2 ;
             :maxPlayers "6"^^xsd:nonNegativeInteger ;
             :minPlayers "3"^^xsd:nonNegativeInteger ;
             :playingTime "20"^^xsd:positiveInteger ;
             :publicationYear "2022"^^xsd:gYear ;
+            :title "Duo" ;
             rdfs:comment "Gioco di bluff semplice per famiglie"@it ;
             rdfs:label "Duo"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#SkyTeam
 :SkyTeam rdf:type owl:NamedIndividual ,
-                  :CooperativeGame ;
+                  :BoardGame ;
          :belongsToGenre :Strategy ;
          :coDesignedBy :AlainOrban ;
          :designedBy :LucRemond ;
          :publishedBy :LePlateauMont ;
+         :typeOfInteraction :cooperative ;
          :bggRating 7.9 ;
          :complexity 2.1 ;
          :maxPlayers "2"^^xsd:nonNegativeInteger ;
          :minPlayers "2"^^xsd:nonNegativeInteger ;
          :playingTime "15"^^xsd:positiveInteger ;
          :publicationYear "2023"^^xsd:gYear ;
+         :title "Sky Team" ;
          rdfs:comment "Gioco cooperativo per due giocatori a tema aeroportuale"@it ;
          rdfs:label "Sky Team"@it .
 
@@ -1218,6 +1306,7 @@ skos:Concept rdf:type owl:Class .
 :StonemaierGames rdf:type owl:NamedIndividual ,
                           :Publisher ;
                  :ProduceGenre :Eurogame ;
+                 :editorName "Stonemaier Games" ;
                  rdfs:comment "Casa editrice americana fondata da Jamey Stegmaier, famosa per produzioni di alta qualità"@it ;
                  rdfs:label "Stonemaier Games"@it ;
                  foaf:name "Stonemaier Games" .
@@ -1232,32 +1321,36 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Ticket2Ride
 :Ticket2Ride rdf:type owl:NamedIndividual ,
-                      :CompetitiveGame ;
+                      :BoardGame ;
              :belongsToGenre :Strategy ;
              :designedBy :DavidStudley ;
              :publishedBy :PlanBGames ;
+             :typeOfInteraction :competitive ;
              :bggRating 7.4 ;
              :complexity 2.6 ;
              :maxPlayers "5"^^xsd:nonNegativeInteger ;
              :minPlayers "2"^^xsd:nonNegativeInteger ;
              :playingTime "90"^^xsd:positiveInteger ;
              :publicationYear "2023"^^xsd:gYear ;
+             :title "Ticket to Ride Legacy" ;
              rdfs:comment "Versione legacy del classico Ticket to Ride con elementi permanenti che si evolvono"@it ;
              rdfs:label "Ticket to Ride Legacy"@it .
 
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Tigris
 :Tigris rdf:type owl:NamedIndividual ,
-                 :CompetitiveGame ;
+                 :BoardGame ;
         :belongsToGenre :Adventure ;
         :designedBy :ReinerKnizia ;
         :publishedBy :KosmosGames ;
+        :typeOfInteraction :competitive ;
         :bggRating 7.6 ;
         :complexity 3.5 ;
         :maxPlayers "4"^^xsd:nonNegativeInteger ;
         :minPlayers "2"^^xsd:nonNegativeInteger ;
         :playingTime "120"^^xsd:positiveInteger ;
         :publicationYear "1997"^^xsd:gYear ;
+        :title "Tigri ed Eufrate" ;
         rdfs:comment "Eurogame strategico ambientato nella Mesopotamia antica"@it ;
         rdfs:label "Tigri ed Eufrate"@it .
 
@@ -1265,6 +1358,7 @@ skos:Concept rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#UweRosenberg
 :UweRosenberg rdf:type owl:NamedIndividual ,
                        :GameDesigner ;
+              :designerName "Uwe Rosenberg" ;
               rdfs:comment "Designer tedesco prolifico, noto per Agricola e altri eurogames"@it ;
               rdfs:label "Uwe Rosenberg"@it ;
               foaf:name "Uwe Rosenberg" .
@@ -1272,18 +1366,20 @@ skos:Concept rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#Wingspan
 :Wingspan rdf:type owl:NamedIndividual ,
-                   :CompetitiveGame ;
+                   :BoardGame ;
           :belongsToGenre :Strategy ;
           :coDesignedBy :DavidStudley ;
           :designedBy :ElizabethHargrave ;
           :hasReleaseEvent :WingspanRelease ;
           :publishedBy :StonemaierGames ;
+          :typeOfInteraction :competitive ;
           :bggRating 8.1 ;
           :complexity 2.42 ;
           :maxPlayers "5"^^xsd:nonNegativeInteger ;
           :minPlayers "1"^^xsd:nonNegativeInteger ;
           :playingTime "70"^^xsd:positiveInteger ;
           :publicationYear "2019"^^xsd:gYear ;
+          :title "Wing Span" ;
           rdfs:comment "Gioco strategico a tema ornitologico"@it ;
           rdfs:label "Wing Span"@it .
 
@@ -1297,17 +1393,24 @@ skos:Concept rdf:type owl:Class .
                  rdfs:label "Rilascio Wingspan"@it .
 
 
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#competitive
+:competitive rdf:type owl:NamedIndividual ,
+                      :GameMacroGenre ;
+             owl:differentFrom :cooperative ;
+             rdfs:comment "Tipologia di gioco in cui i giocatori per vincere devono scontrarsi con gli altri giocatori"@it ;
+             rdfs:label "Competitivo"@it .
+
+
+###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#cooperative
+:cooperative rdf:type owl:NamedIndividual ,
+                      :GameMacroGenre ;
+             vann:preferredNamespacePrefix "Tipologia di gioco dove i giocatori collaborano per raggiungere  un obiettivo comune"@it ;
+             rdfs:label "Cooperativo"@it .
+
+
 #################################################################
 #    General axioms
 #################################################################
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :CompetitiveGame
-                :CooperativeGame
-                :GameExpansion
-              )
-] .
-
 
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :Abstract
@@ -1383,12 +1486,6 @@ skos:Concept rdf:type owl:Class .
 #    Rules
 #################################################################
 
-:g rdf:type swrl:Variable .
-
-:comp rdf:type swrl:Variable .
-
-:time rdf:type swrl:Variable .
-
 :g1 rdf:type swrl:Variable .
 
 :g2 rdf:type swrl:Variable .
@@ -1418,66 +1515,8 @@ skos:Concept rdf:type owl:Class .
 :d2 rdf:type swrl:Variable .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Un gioco con complessità >= 3.0 e tempo di gioco > 90 minuti viene classificato come ExpertGame" ;
-   rdfs:label "Regola 2 - Giochi per Esperti" ;
-   rdf:type swrl:Imp ;
-   swrl:body [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :BoardGame ;
-                           swrl:argument1 :g
-                         ] ;
-               rdf:rest [ rdf:type swrl:AtomList ;
-                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                      swrl:propertyPredicate :complexity ;
-                                      swrl:argument1 :g ;
-                                      swrl:argument2 :comp
-                                    ] ;
-                          rdf:rest [ rdf:type swrl:AtomList ;
-                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                                 swrl:propertyPredicate :playingTime ;
-                                                 swrl:argument1 :g ;
-                                                 swrl:argument2 :time
-                                               ] ;
-                                     rdf:rest [ rdf:type swrl:AtomList ;
-                                                rdf:first [ rdf:type swrl:BuiltinAtom ;
-                                                            swrl:builtin swrlb:greaterThanOrEqual ;
-                                                            swrl:arguments [ rdf:type rdf:List ;
-                                                                             rdf:first :comp ;
-                                                                             rdf:rest [ rdf:type rdf:List ;
-                                                                                        rdf:first 3.0 ;
-                                                                                        rdf:rest rdf:nil
-                                                                                      ]
-                                                                           ]
-                                                          ] ;
-                                                rdf:rest [ rdf:type swrl:AtomList ;
-                                                           rdf:first [ rdf:type swrl:BuiltinAtom ;
-                                                                       swrl:builtin swrlb:greaterThan ;
-                                                                       swrl:arguments [ rdf:type rdf:List ;
-                                                                                        rdf:first :time ;
-                                                                                        rdf:rest [ rdf:type rdf:List ;
-                                                                                                   rdf:first 90 ;
-                                                                                                   rdf:rest rdf:nil
-                                                                                                 ]
-                                                                                      ]
-                                                                     ] ;
-                                                           rdf:rest rdf:nil
-                                                         ]
-                                              ]
-                                   ]
-                        ]
-             ] ;
-   swrl:head [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :ExpertGame ;
-                           swrl:argument1 :g
-                         ] ;
-               rdf:rest rdf:nil
-             ]
- ] .
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment "regola per trovare  designer che hanno progettato almeno 3 giochi diversi" ;
-   rdfs:label "Regola 6 - Designer Esperto" ;
+   rdfs:label "Regola 2 - Designer Esperto" ;
    rdf:type swrl:Imp ;
    swrl:body [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
