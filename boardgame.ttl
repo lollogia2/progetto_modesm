@@ -208,6 +208,8 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#hasPublished
 :hasPublished rdf:type owl:ObjectProperty ;
               owl:inverseOf :publishedBy ;
+              rdfs:domain :Publisher ;
+              rdfs:range :BoardGame ;
               rdfs:comment "Un editore ha pubblicato un gioco"@it ;
               rdfs:label "ha pubblicato"@it .
 
@@ -494,6 +496,10 @@ dcterms:Agent rdf:type owl:Class .
 :FamilyGame rdf:type owl:Class ;
             owl:equivalentClass [ owl:intersectionOf ( :BoardGame
                                                        [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :typeOfInteraction ;
+                                                         owl:hasValue :competitive
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
                                                          owl:onProperty :complexity ;
                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
                                                                               owl:onDatatype xsd:decimal ;
@@ -506,7 +512,7 @@ dcterms:Agent rdf:type owl:Class .
                                                          owl:onProperty :maxPlayers ;
                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
                                                                               owl:onDatatype xsd:nonNegativeInteger ;
-                                                                              owl:withRestrictions ( [ xsd:minExclusive 2
+                                                                              owl:withRestrictions ( [ xsd:minExclusive "2"^^xsd:nonNegativeInteger
                                                                                                      ]
                                                                                                    )
                                                                             ]
@@ -514,7 +520,7 @@ dcterms:Agent rdf:type owl:Class .
                                                      ) ;
                                   rdf:type owl:Class
                                 ] ;
-            rdfs:comment "Gioco competitivo con meccaniche semplici (complessità < 2.5) per gruppi numerosi (più di 2 giocatori), ideale per il divertimento familiare"@it ;
+            rdfs:comment "Giochi competitivi con meccaniche semplici (complessità < 2.5) per gruppi numerosi (più di 2 giocatori), ideale per il divertimento familiare"@it ;
             rdfs:label "Gioco per Famiglie"@it .
 
 
@@ -758,7 +764,7 @@ dcterms:Agent rdf:type owl:Class .
                                                      rdf:type owl:Class
                                                    ] ;
                                rdfs:subClassOf :AmeritrashPublisher ;
-                               rdfs:comment "Un editore che ha progettato almeno un gioco vincitore di un premio"@it ;
+                               rdfs:comment "Un editore di Ameritrash che ha progettato almeno un gioco vincitore di un premio"@it ;
                                rdfs:label "Editore di Ameritrash di successo"@it .
 
 
@@ -787,7 +793,7 @@ dcterms:Agent rdf:type owl:Class .
                                                    rdf:type owl:Class
                                                  ] ;
                              rdfs:subClassOf :EurogamePublisher ;
-                             rdfs:comment "Un editore che ha progettato almeno un gioco vincitore di un premio"@it ;
+                             rdfs:comment "Un editore di eurogames che ha progettato almeno un gioco vincitore di un premio"@it ;
                              rdfs:label "Editore di eurogame Successo"@it .
 
 
@@ -800,7 +806,7 @@ dcterms:Agent rdf:type owl:Class .
 ###  http://www.semanticweb.org/giacomettigiovanale/ontologies/2025/7/spiel-des-jahres#VersatilePublisher
 :VersatilePublisher rdf:type owl:Class ;
                     rdfs:subClassOf :Publisher ;
-                    rdfs:comment "Editore che pubblica giochi di generi diversi"@it ;
+                    rdfs:comment "Editore che ha pubblicato almeno 2 giochi di generi diversi"@it ;
                     rdfs:label "Editore Versatile"@it .
 
 
@@ -1454,6 +1460,15 @@ skos:Concept rdf:type owl:Class .
 
 
 [ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Ameritrash
+                        :Eurogame
+                        :competitive
+                        :cooperative
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :Ceremony2016
                         :Ceremony2017
                         :Ceremony2018
@@ -1468,6 +1483,16 @@ skos:Concept rdf:type owl:Class .
                         :LePlateauMont
                         :PlanBGames
                         :StonemaierGames
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :NominationList2016
+                        :NominationList2017
+                        :NominationList2018
+                        :NominationList2019
+                        :NominationList2020
                       )
 ] .
 
@@ -1640,7 +1665,7 @@ skos:Concept rdf:type owl:Class .
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Gli editori che pubblicano giochi di generi diversi diventano \"VersatilePublisher\"" ;
+   rdfs:comment "Gli editori che pubblicano almeno 2 giochi di generi diversi diventano \"VersatilePublisher\"" ;
    rdfs:label "Regola 3 - Editori Versatili" ;
    rdf:type swrl:Imp ;
    swrl:body [ rdf:type swrl:AtomList ;
@@ -1749,7 +1774,7 @@ skos:Concept rdf:type owl:Class .
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Due designer che collaborano su un gioco cooperativo vengono collegati dalla proprietà cooperativePartner" ;
+   rdfs:comment "Un editore se ha prodotto almeno 2 giochi con un editore allora \"hasPrivilegedRelationWith\" con quell'editore" ;
    rdfs:label "Regola 4 - Relazione Privilegiata Designer-Editore" ;
    rdf:type swrl:Imp ;
    swrl:body [ rdf:type swrl:AtomList ;
